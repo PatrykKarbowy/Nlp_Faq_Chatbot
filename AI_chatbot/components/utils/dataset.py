@@ -1,13 +1,21 @@
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 from torch.utils.data import Dataset
+import numpy as np
 import torch
 import json
 
 from components.config import DLTrainingConfig
+from components.utils.helpers import WordsCollection
 from nltk_utils import tokenize, stem, bag_of_words
 
 class ChatDataset(Dataset):
+    """Custrom dataset class for handling input intents.json files.
+
+    Args:
+        inputs (List[Path]): List of file paths for input intents files.
+        cfg (DLTrainingConfig): Training configuration object.
+    """
     def __init__(
         self,
         inputs: List[Path],
@@ -15,17 +23,19 @@ class ChatDataset(Dataset):
         ) -> None:
         self.inputs = inputs
         self.cfg = cfg
-        self.all_words, self.categories, self.xy: Tuple[List[str], List[str], List[str]] = self._initialize_all_words()
+        self.words_collection: WordsCollection = self._set_words_collection()
     
-    def _initialize_all_words(self) -> Tuple[List[str], List[str], List[str]]:
-        """Create and return lists of words.
+    def _set_words_collection(self) -> WordsCollection:
+        """Create and return the WordsCollection object for dataset class.
+        This method constructs and organizes the words for the dataset.
 
         Returns:
-            Tuple[List[str], List[str], List[str]]: Tuple containing list of words lists.
+            WordsCollection: An object containing dataset words related information.
         """
         categories = []
         all_words = []
         xy = []
+        
         # Loop through all intents files and fill lists
         for path in self.inputs:
             with open(path, 'r') as f:
@@ -43,7 +53,13 @@ class ChatDataset(Dataset):
         all_words = sorted(set(all_words))
         categories = sorted((set(categories)))
         
-        return (all_words, categories, xy)
+        words_collection = WordsCollection(
+            categories=categories,
+            all_words=all_words,
+            xy=xy
+        )
+        
+        return words_collection
         
     def __len__(self) -> int:
         """Get the number of samples in dataset.
@@ -51,8 +67,28 @@ class ChatDataset(Dataset):
         Returns:
             int: Number of samples in dataset.
         """
-        return len()
-    # dataset[index]
-    def __getitem__(self, index):
-        return self.x_data[index], self.y_data[index]
+        return len(self.words_collection.all_words)
+    
+    def __getitem__(self, index: int) -> Tuple[np.array, np.array]:
+        """Get a single sample from the dataset.
+
+        Args:
+            index (int): Index of the sample to retrieve.
+
+        Returns:
+            Tuple[np.array, np.array]: A tuple containing the input data and corresponding category.
+        """
+        X_data = []
+        y_data = []
+        for (pattern_sentence, tag) in self.words_collection.xy:
+            bag = bag_of_words(pattern_sentence, self.words_collection.all_words)
+            X_data.append(bag)    
+            
+            label = self.words_collection.categories.index(tag)
+            y_data.append(label)
+        
+        X_data = np.array(X_data)
+        y_data = np.array(y_data)
+        
+        return (X_data[index], y_data[index])
     
