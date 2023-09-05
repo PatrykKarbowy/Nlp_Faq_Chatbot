@@ -1,3 +1,7 @@
+from abc import ABC
+from pathlib import Path
+from typing import Any, Dict, List
+
 import json
 from nltk_utils import tokenize, stem, bag_of_words
 import numpy as np
@@ -5,6 +9,23 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from components.utils.model import ChatNet
+
+from components.config import DLTrainingConfig
+from components.utils.helpers import DataCollection
+
+class Train(ABC):
+    """Base class for all trainings.
+
+    Args:
+        ABC (_type_): _description_
+    """
+    
+    def __init__(self, cfg: DLTrainingConfig) -> None:
+        self.cfg = cfg
+        self.data_collection: DataCollection = self._set_data_collection()
+    
+    def _set_data_collection(self) -> DataCollection:
+        pass
 
 with open('intents.json', 'r') as f:
     intents = json.load(f)
