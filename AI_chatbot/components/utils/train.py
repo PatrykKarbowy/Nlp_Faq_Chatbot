@@ -1,10 +1,7 @@
 from abc import ABC
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import List, Tuple
 
-import json
-from nltk_utils import tokenize, stem, bag_of_words
-import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -97,7 +94,10 @@ class Train(ABC):
         """
         return torch.optim.Adam(self.model.parameters(), lr=self.cfg.learning_rate)
     
-    def _set_training_loop(self) -> None:
+    def run_training(self) -> None:
+        """Run the training process.
+        This method initiates the training process
+        """
         for epoch in range(self.cfg.max_epochs):
             model = self.model.to(self.cfg.device)
             for (words, labels) in self.data_collection.train_loader:
@@ -115,17 +115,6 @@ class Train(ABC):
             
             if (epoch+1) % 50 == 0:
                 print(f"epoch {epoch+1}/{self.cfg.max_epochs}, loss = {loss.item():.4f}")
-
-data = {
-    'model_state': model.state_dict(),
-    'input_size': input_size,
-    'output_size': output_size,
-    'hidden_size': hidden_size,
-    'all_words': all_words,
-    'categories': categories
-}
-
-FILE = 'data.pth'
-torch.save(data, FILE)
-
-print(f'training complete, files saved to {FILE}')        
+        
+        torch.save(model, "data.pth")
+        print("Training completed")     
