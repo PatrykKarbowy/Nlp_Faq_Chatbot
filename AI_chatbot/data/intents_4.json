@@ -1,0 +1,113 @@
+{
+  "intents": [
+    {
+      "category": "Greetings",
+      "Question": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "Answer": [
+        "Hello and welcome to [Private Bank Name]. How can we assist you with your financial needs?",
+        "Hi there! How may we help you manage your finances today?",
+        "Hello, and thank you for choosing [Private Bank Name]. How can we assist you with your banking needs?",
+        "Good day! How can we make your banking experience better today?"
+      ]
+    },
+    {
+      "category": "Goodbye",
+      "Question": ["Bye", "See you later", "Goodbye"],
+      "Answer": [
+        "Goodbye, and have a great day!",
+        "See you later! If you have more financial questions, feel free to return anytime.",
+        "Thank you for choosing [Private Bank Name]. Goodbye!"
+      ]
+    },
+    {
+      "category": "Thanks",
+      "Question": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "Answer": ["You're welcome!", "It's our pleasure to assist you with your financial needs!", "Thank you for choosing [Private Bank Name] for your banking services!"]
+    },
+    {
+      "category": "Account Types",
+      "Question": [
+        "What types of accounts do you offer?",
+        "Can you explain your account options?",
+        "Do you have savings and checking accounts?"
+      ],
+      "Answer": [
+        "We offer a variety of accounts, including savings accounts, checking accounts, certificates of deposit (CDs), and more. Our financial experts can help you choose the best option for your needs.",
+        "Our account options include savings accounts for long-term goals, checking accounts for everyday transactions, and CDs for higher interest rates. Speak to our team to find the right fit for you.",
+        "Yes, we have both savings and checking accounts available. We also offer other account types to meet your financial goals."
+      ]
+    },
+    {
+      "category": "Online Banking",
+      "Question": [
+        "How can I access my account online?",
+        "Do you offer online banking services?",
+        "What features are available through online banking?"
+      ],
+      "Answer": [
+        "You can access your account online through our secure online banking portal. Simply visit our website and log in to view your account details and perform transactions.",
+        "Yes, we offer online banking services that allow you to manage your accounts from the comfort of your home. You can check balances, transfer funds, pay bills, and more.",
+        "With online banking, you can check your account balances, view transaction history, transfer funds between accounts, pay bills, and set up account alerts for added security."
+      ]
+    },
+    {
+      "category": "Loans and Mortgages",
+      "Question": [
+        "What types of loans do you offer?",
+        "Can you explain your mortgage options?",
+        "Do you provide personal loans?"
+      ],
+      "Answer": [
+        "We offer a range of loan options, including personal loans, auto loans, home equity loans, and mortgages. Our lending team can guide you through the application process.",
+        "Our mortgage options include fixed-rate and adjustable-rate mortgages. We offer competitive rates and flexible terms. Speak to our mortgage specialists for details.",
+        "Yes, we provide personal loans to help you meet your financial goals. Contact our lending team to learn more about our personal loan options."
+      ]
+    },
+    {
+      "category": "Investment Services",
+      "Question": [
+        "Do you offer investment services?",
+        "What investment options are available?",
+        "Can you explain your wealth management services?"
+      ],
+      "Answer": [
+        "Yes, we offer investment services to help you grow your wealth. Our financial advisors can assist you with a range of investment options, including stocks, bonds, mutual funds, and more.",
+        "Our investment options cover a broad spectrum, from individual stocks and bonds to diversified mutual funds and retirement planning. Our experts can tailor a strategy to meet your financial objectives.",
+        "Our wealth management services are designed to help you achieve your financial goals. We offer personalized investment strategies, retirement planning, and portfolio management to maximize your wealth."
+      ]
+    },
+    {
+      "category": "Branch Locations",
+      "Question": [
+        "Where are your branch locations?",
+        "Do you have ATMs available?",
+        "Can you provide the address of your main branch?"
+      ],
+      "Answer": [
+        "We have branch locations in multiple cities. You can find our nearest branch to you by using our branch locator tool on our website.",
+        "Yes, we have ATMs available at most of our branch locations for your convenience. You can withdraw cash, check balances, and more.",
+        "Our main branch is located at [Main Branch Address]. You can visit us there for in-person assistance with your banking needs."
+      ]
+    },
+    {
+      "category": "Contact Information",
+      "Question": [
+        "How can I contact your bank?",
+        "What are your contact details?",
+        "Can you provide your phone number and email address?"
+      ],
+      "Answer": [
+        "You can reach our bank by calling [Phone Number] or sending an email to [Email Address]. We're here to assist you with your financial inquiries.",
+        "Feel free to contact us at [Phone Number] or reach out via email at [Email Address]. We're ready to answer your questions and provide financial guidance.",
+        "To get in touch with us, simply call [Phone Number] or send an email to [Email Address]. We look forward to helping you with your banking needs."
+      ]
+    }
+  ]
+}

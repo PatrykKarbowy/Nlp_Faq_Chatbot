@@ -1,105 +1,120 @@
-import json
-from nltk_utils import tokenize, stem, bag_of_words
-import numpy as np
+from abc import ABC
+from pathlib import Path
+from typing import List, Tuple
+
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from components.utils.model import ChatNet
+from components.utils.dataset import ChatDataset
 
-with open('intents.json', 'r') as f:
-    intents = json.load(f)
+from sklearn.model_selection import train_test_split
 
-all_words = []
-categories = []
-xy = []
+from components.config import DLTrainingConfig
+from components.utils.helpers import DataCollection, build_loss_fn
+import consts.dl_model_training
 
-for intent in intents['intents']:
-    category = intent['category']
-    categories.append(category)
-    for question in intent['Question']:
-        w = tokenize(question)
-        all_words.extend(w)
-        xy.append((w, category))
-        
-ignore_words = ['?','!','.',',']
-all_words = [stem(w) for w in all_words if w not in ignore_words]
-all_words = sorted(set(all_words))
-categories = sorted((set(categories)))
-
-X_train = []
-y_train = []
-
-for (pattern_sentence, tag) in xy:
-    bag = bag_of_words(pattern_sentence, all_words)
-    X_train.append(bag)    
+class Train(ABC):
+    """Base class for all trainings."""
     
-    label = categories.index(tag)
-    y_train.append(label) # CrossEntropyLoss
+    def __init__(self, cfg: DLTrainingConfig) -> None:
+        """Initialize training."""
+        self.cfg = cfg
+        self.data_collection: DataCollection = self._set_data_collection()
     
-X_train = np.array(X_train)
-y_train = np.array(y_train)
+    def _create_data(
+        self,
+        inputs: List[Path],
+        train: bool
+    ) -> tuple[DataLoader, Dataset]:
+        """Create and return DataLoader and Dataset from given data.
+        This method constructs and retrund DataLoader and Dataset from provided data.
 
-class ChatDataset(Dataset):
-    def __init__(self):
-        self.n_samples = len(X_train)
-        self.x_data = X_train
-        self.y_data = y_train
+        Args:
+            inputs (List[Path]): An input intents paths.
+            train (bool): Indicator if the DataLoader is used for training.
+
+        Returns:
+            tuple[DataLoader, Dataset]: The DataLoader and Dataset objects used in data collection.
+        """
+        dataset = ChatDataset(inputs=inputs, cfg=self.cfg)
+        data_loader = DataLoader(dataset, batch_size=self.cfg.batch_size, drop_last=True, shuffle=train)
         
-    # dataset[index]
-    def __getitem__(self, index):
-        return self.x_data[index], self.y_data[index]
+        return (data_loader, dataset)
     
-    def __len__(self):
-        return  self.n_samples
+    def _set_data_collection(self) -> DataCollection:
+        """Create and return the DataCollection object for training, validation and testing.
+        This method constructs and organizes the datasets and data lodaers for the experiment.
 
-# Hyperparameters
-batch_size = 8
-hidden_size = 64
-output_size = len(categories)
-input_size = len(X_train[0])
-learning_rate = 0.001
-epochs = 500
+        Returns:
+            DataCollection: An object containing train, validation and test data loaders and related informations.
+        """
+        intents = list(Path(self.cfg.data_dir).rglob('**/*.json'))
+        intents.sort()
+        
+        _, full_dataset = self._create_data(inputs=intents, train=False)
+        
+        train_intents, val_intents = train_test_split(
+            intents,
+            test_size=consts.dl_model_training.VAL_DATASET_SIZE,
+            random_state=consts.dl_model_training.RANDOM_STATE
+        )
+        
+        train_loader, _ = self._create_data(inputs=train_intents, train=False)
+        val_loader, _ = self._create_data(inputs=val_intents, train=False)
+        
+        data_collection = DataCollection(
+            train_loader=train_loader,
+            val_loader=val_loader,
+            num_categories=full_dataset.get_categories,
+            num_inputs=len(full_dataset)
+        )
+        
+        return data_collection
     
-dataset = ChatDataset()
-train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = ChatNet(input_size, hidden_size, output_size).to(device)
-
-# Loss and optimizer
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-
-for epoch in range(epochs):
-    for (words, labels) in train_loader:
-        words = words.to(device)
-        labels = labels.to(device).long()
+    @property
+    def model(self) -> nn.Module:
+        """Creates and returns deep learning model using specified arguments.
         
-        #forward
-        outputs = model(words)
-        loss = criterion(outputs, labels)
+        Returns:
+            nn.Module: Deep learning model used for the training.
+        """
+        return ChatNet(
+            input_size=self.data_collection.num_inputs,
+            hidden_size=self.cfg.hidden_size,
+            output_size=self.data_collection.num_categories
+            )
         
-        #backward and optimizer step
-        optimizer.zero_grad()
+    @property
+    def optimizer(self) -> torch.optim:
+        """Creates and returns deep learning optimizer using specified arguments.
         
-        loss.backward()
-        optimizer.step()
+        Returns:
+            torch.optim: Deep learning optimizer used for the training.
+        """
+        return torch.optim.Adam(self.model.parameters(), lr=self.cfg.learning_rate)
+    
+    def run_training(self) -> None:
+        """Run the training process.
+        This method initiates the training process
+        """
+        for epoch in range(self.cfg.max_epochs):
+            model = self.model.to(self.cfg.device)
+            for (words, labels) in self.data_collection.train_loader:
+                words = words.to(self.cfg.device)
+                labels = labels.to(self.cfg.device).long()
+                
+                #forward
+                outputs = model(words)
+                loss = build_loss_fn(name=self.cfg.loss)(outputs, labels)
+                
+                #backward and optimizer step
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+            
+            if (epoch+1) % 50 == 0:
+                print(f"epoch {epoch+1}/{self.cfg.max_epochs}, loss = {loss.item():.4f}")
         
-    if (epoch+1) % 50 == 0:
-        print(f'epoch {epoch+1}/{epochs}, loss = {loss.item():.4f}')    
-        
-print(f'final loss, loss = {loss.item():.4f}')
-
-data = {
-    'model_state': model.state_dict(),
-    'input_size': input_size,
-    'output_size': output_size,
-    'hidden_size': hidden_size,
-    'all_words': all_words,
-    'categories': categories
-}
-
-FILE = 'data.pth'
-torch.save(data, FILE)
-
-print(f'training complete, files saved to {FILE}')        
+        torch.save(model, "data.pth")
+        print("Training completed")     
