@@ -52,22 +52,20 @@ class Train(ABC):
         intents = list(Path(self.cfg.data_dir).rglob('**/*.json'))
         intents.sort()
         
-        _, full_dataset = self._create_data(inputs=intents, train=False)
-        
         train_intents, val_intents = train_test_split(
             intents,
             test_size=consts.dl_model_training.VAL_DATASET_SIZE,
             random_state=consts.dl_model_training.RANDOM_STATE
         )
         
-        train_loader, _ = self._create_data(inputs=train_intents, train=False)
         val_loader, _ = self._create_data(inputs=val_intents, train=False)
+        train_loader, train_dataset = self._create_data(inputs=train_intents, train=True)
         
         data_collection = DataCollection(
             train_loader=train_loader,
             val_loader=val_loader,
-            num_categories=full_dataset.get_categories,
-            num_inputs=len(full_dataset)
+            num_categories=train_dataset.get_categories,
+            num_inputs=train_dataset.get_inputs_number
         )
         
         return data_collection
