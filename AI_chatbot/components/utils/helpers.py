@@ -29,11 +29,11 @@ class DataCollection:
         num_inputs: (int): Number of inputs from dataset.
     """
     
-    train_loader: Optional[DataLoader]
-    val_loader: Optional[DataLoader]
-    test_loader: Optional[DataLoader]
     num_categories: int
     num_inputs: int
+    train_loader: Optional[DataLoader]
+    val_loader: Optional[DataLoader]
+    test_loader: Optional[DataLoader] = None
     
 def build_loss_fn(name: str) -> Callable:
     """Build a loss function based on the provided name.
