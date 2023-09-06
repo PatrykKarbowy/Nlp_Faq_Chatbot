@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Optional, List, Tuple, Callable
 from torch.utils.data import DataLoader
 import torch.nn as nn
+import numpy as np
 
 @dataclass
 class WordsCollection:
@@ -34,6 +35,18 @@ class DataCollection:
     train_loader: Optional[DataLoader]
     val_loader: Optional[DataLoader]
     test_loader: Optional[DataLoader] = None
+    
+@dataclass
+class LabeledCollection:
+    """A data class that holds X and y data.
+    
+    Args:
+        X_data: (Optional[np.array]): X data used in dataset.
+        y_data: (Optional[np.array]): Corresponding y data used in dataset.
+    """
+    
+    X_data: Optional[np.array]
+    y_data: Optional[np.array]
     
 def build_loss_fn(name: str) -> Callable:
     """Build a loss function based on the provided name.

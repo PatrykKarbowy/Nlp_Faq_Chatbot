@@ -30,6 +30,7 @@ class ChatNet(nn.Module):
         Returns:
             torch.Tensor: Output tensor.
         """
+        
         out = self.linear_1(x)
         out = self.relu(out)
         out = self.linear_2(out)
