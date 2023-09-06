@@ -26,7 +26,7 @@ class Train(ABC):
         self,
         inputs: List[Path],
         train: bool
-    ) -> Tuple(DataLoader, Dataset):
+    ) -> tuple[DataLoader, Dataset]:
         """Create and return DataLoader and Dataset from given data.
         This method constructs and retrund DataLoader and Dataset from provided data.
 
@@ -35,7 +35,7 @@ class Train(ABC):
             train (bool): Indicator if the DataLoader is used for training.
 
         Returns:
-            Tuple[DataLoader, Dataset]: The DataLoader and Dataset objects used in data collection.
+            tuple[DataLoader, Dataset]: The DataLoader and Dataset objects used in data collection.
         """
         dataset = ChatDataset(inputs=inputs, cfg=self.cfg)
         data_loader = DataLoader(dataset, batch_size=self.cfg.batch_size, drop_last=True, shuffle=train)
@@ -49,7 +49,7 @@ class Train(ABC):
         Returns:
             DataCollection: An object containing train, validation and test data loaders and related informations.
         """
-        intents = list(Path(self.cfg.data_dir))
+        intents = list(Path(self.cfg.data_dir).rglob('**/*.json'))
         intents.sort()
         
         _, full_dataset = self._create_data(inputs=intents, train=False)
@@ -81,7 +81,7 @@ class Train(ABC):
         """
         return ChatNet(
             input_size=self.data_collection.num_inputs,
-            hidden_size=self.cfg.hidden_layers,
+            hidden_size=self.cfg.hidden_size,
             output_size=self.data_collection.num_categories
             )
         

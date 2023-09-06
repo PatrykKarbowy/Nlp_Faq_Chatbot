@@ -1,13 +1,12 @@
 from pathlib import Path
-from typing import List, Tuple
+from typing import List
 from torch.utils.data import Dataset
 import numpy as np
-import torch
 import json
 
 from components.config import DLTrainingConfig
-from components.utils.helpers import WordsCollection
-from nltk_utils import tokenize, stem, bag_of_words
+from .helpers import WordsCollection
+from .nltk_utils import tokenize, stem, bag_of_words
 
 class ChatDataset(Dataset):
     """Custrom dataset class for handling input intents.json files.
@@ -78,14 +77,14 @@ class ChatDataset(Dataset):
         """
         return len(self.words_collection.categories)
     
-    def __getitem__(self, index: int) -> Tuple[np.array, np.array]:
+    def __getitem__(self, index: int) -> tuple[np.array, np.array]:
         """Get a single sample from the dataset.
 
         Args:
             index (int): Index of the sample to retrieve.
 
         Returns:
-            Tuple[np.array, np.array]: A tuple containing the input data and corresponding category.
+            tuple[np.array, np.array]: A tuple containing the input data and corresponding category.
         """
         X_data = []
         y_data = []

@@ -13,23 +13,23 @@ class DLTrainingConfig(BaseModel):
     max_epochs: int
     loss: str
     device: str
+    ignore_words: str
     
     # Model parameters
-    hidden_layers: int
+    hidden_size: int
     
     # Optimizer parameters
-    weight_decay: int
     optimizer: str
     
     # Datamodule parameters
-    data_dir: Path
+    data_dir: Path  
     
     @validator("data_dir")
     def validate_data_path(cls, v: Union[str, Path]) -> Path:
         return Path(v).resolve()
     
-    @validator("batch_size", "max_epochs", "hidden_layers", "weight_decay", "device")
-    def validate_str_field(cls, v: Union[str, int, float]) -> int:
+    @validator("batch_size", "max_epochs", "hidden_size")
+    def validate_int_field(cls, v: Union[str, int, float]) -> int:
         if isinstance(v, int):
             return v
         return abs(int(float(v)))
@@ -40,7 +40,7 @@ class DLTrainingConfig(BaseModel):
             return v
         return abs(float(v))
     
-    @validator("loss", "optimizer")
+    @validator("loss", "optimizer", "device", "ignore_words")
     def validate_string_field(cls, v: Union[str, int, float]) -> int:
         if not isinstance(v, str):
             raise ValueError("Value must be a string")

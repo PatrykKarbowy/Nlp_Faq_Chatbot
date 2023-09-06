@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Optional, List, Tuple, Callable
 from torch.utils.data import DataLoader
 import torch.nn as nn
-import torch
 
 @dataclass
 class WordsCollection:
