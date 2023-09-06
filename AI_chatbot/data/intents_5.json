@@ -1,0 +1,126 @@
+{
+  "intents": [
+    {
+      "category": "Greetings",
+      "Question": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Is anyone there?",
+        "Good day",
+        "Greetings"
+      ],
+      "Answer": [
+        "Hello! Welcome to [Private Lesson Website Name]. How can we assist you with your learning journey today?",
+        "Hi there! How can we help you find the perfect private lesson?",
+        "Hello and welcome! How may we assist you in your quest for knowledge?",
+        "Good day! How can we make your learning experience better today?"
+      ]
+    },
+    {
+      "category": "Goodbye",
+      "Question": ["Bye", "See you later", "Goodbye"],
+      "Answer": [
+        "Goodbye, and happy learning!",
+        "See you later! If you have more questions, feel free to return anytime.",
+        "Thank you for choosing [Private Lesson Website Name] for your learning needs. Goodbye!"
+      ]
+    },
+    {
+      "category": "Thanks",
+      "Question": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "Answer": ["You're welcome! We're here to help you learn.", "It's our pleasure to assist you in your learning journey.", "Thank you for choosing us as your learning partner!"]
+    },
+    {
+      "category": "Lesson Categories",
+      "Question": [
+        "What types of lessons are available?",
+        "Can you explain your lesson categories?",
+        "Do you offer lessons in multiple subjects?"
+      ],
+      "Answer": [
+        "We offer a wide range of lessons, including music, art, language, and more. Explore our lesson categories to find the perfect match for your interests.",
+        "Our lesson categories cover diverse subjects, from academic tutoring to creative arts and hobbies. Browse our categories to discover your passion.",
+        "Yes, we provide lessons in multiple subjects. You can choose from various categories to find the right lessons for you."
+      ]
+    },
+    {
+      "category": "Booking Lessons",
+      "Question": [
+        "How can I book a lesson?",
+        "Can I schedule lessons with multiple instructors?",
+        "What do I need to prepare for my first lesson?"
+      ],
+      "Answer": [
+        "To book a lesson, simply browse our instructors, select the one you prefer, and choose a convenient time slot from their availability. Follow the prompts to confirm your booking.",
+        "Yes, you can schedule lessons with multiple instructors based on your interests and goals.",
+        "For your first lesson, ensure you have the necessary materials or equipment as specified by your instructor. Be ready to learn and have a great experience!"
+      ]
+    },
+    {
+      "category": "Instructor Profiles",
+      "Question": [
+        "Can I see instructor profiles?",
+        "How do I learn more about the instructors?",
+        "What information is available about the instructors?"
+      ],
+      "Answer": [
+        "Certainly! You can view detailed profiles of our instructors, including their qualifications, teaching experience, and student reviews.",
+        "To learn more about our instructors, simply click on their profiles to access information such as their teaching style, expertise, and student feedback.",
+        "Instructor profiles provide insights into their background, teaching approach, and student interactions, helping you make an informed choice."
+      ]
+    },
+    {
+      "category": "Pricing and Payments",
+      "Question": [
+        "How much do lessons cost?",
+        "Can I pay for lessons in installments?",
+        "What payment methods are accepted?"
+      ],
+      "Answer": [
+        "Lesson costs vary depending on the instructor and the type of lesson. You can find pricing details on each instructor's profile.",
+        "Some instructors offer installment payment options. Check their profiles or contact them directly to inquire about payment plans.",
+        "We accept various payment methods, including credit cards, PayPal, and other secure online payment options, for your convenience."
+      ]
+    },
+    {
+      "category": "Cancellation Policy",
+      "Question": [
+        "What is your cancellation policy?",
+        "How do I cancel a lesson?",
+        "Is there a penalty for late cancellations?"
+      ],
+      "Answer": [
+        "Our cancellation policy may vary by instructor. Please review the cancellation policy on your instructor's profile for specific details.",
+        "To cancel a lesson, go to your booking and follow the cancellation process outlined by the instructor. Be sure to cancel within the specified time frame to avoid any charges.",
+        "Some instructors may impose penalties for late cancellations. Review your instructor's cancellation policy for details to avoid any fees."
+      ]
+    },
+    {
+      "category": "Technical Support",
+      "Question": [
+        "I'm having technical issues during my lesson. What should I do?",
+        "How can I troubleshoot technical problems?",
+        "Is technical support available during lessons?"
+      ],
+      "Answer": [
+        "If you encounter technical issues during your lesson, please contact our technical support team at [Technical Support Email] or [Technical Support Phone Number] for immediate assistance.",
+        "For troubleshooting technical problems, you can refer to our technical support guide on our website. It provides step-by-step solutions to common issues.",
+        "While lessons are in progress, technical support may not be available. However, you can refer to our troubleshooting guide for assistance with common technical problems."
+      ]
+    },
+    {
+      "category": "Contact Information",
+      "Question": [
+        "How can I contact your website's support team?",
+        "What are your contact details for inquiries?",
+        "Can you provide your phone number and email address?"
+      ],
+      "Answer": [
+        "You can reach our support team by sending an email to [Support Email] or calling [Support Phone Number]. We're here to assist you with any questions or concerns.",
+        "Feel free to contact our support team at [Support Email] or [Support Phone Number]. We're dedicated to providing excellent support to enhance your learning experience.",
+        "To get in touch with us, simply call [Support Phone Number] or send an email to [Support Email]. We're here to assist you with any inquiries you may have."
+      ]
+    }
+  ]
+}

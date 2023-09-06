@@ -1,0 +1,217 @@
+{
+  "intents": [
+    {
+      "category": "Greetings",
+      "Question": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "Answer": [
+        "Hey, Can I help You?",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ]
+    },
+    {
+      "category": "Goodbye",
+      "Question": ["Bye", "See you later", "Goodbye"],
+      "Answer": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
+      "category": "Thanks",
+      "Question": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "Answer": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "category": "Returns and Exchanges",
+      "Question": [
+        "What is your return policy?",
+        "What is your policy on returns and exchanges?",
+        "How can I return or exchange items if I'm not satisfied?"
+      ],
+      "Answer": [
+        "Our return policy allows for returns and exchanges within 30 days of purchase.",
+        "You can request a refund or exchange within our 30-day return window.",
+        "We accept returns and exchanges within 30 days as long as the items are in unused condition and have the original tags attached."
+      ]
+    },
+    {
+      "category": "Payment Methods",
+      "Question": [
+        "What payment methods do you accept?",
+        "Which payment options are available for making a purchase?",
+        "Can I use other payment methods apart from credit cards and PayPal?"
+      ],
+      "Answer": [
+        "We accept major credit cards, PayPal, and Apple Pay as payment methods.",
+        "You can make payments using credit cards, PayPal, or Apple Pay at checkout.",
+        "We offer multiple payment options, including credit cards, PayPal, and Apple Pay, for your convenience."
+      ]
+    },
+    {
+      "category": "Shipping Information",
+      "Question": [
+        "How long does shipping take?",
+        "What is the estimated delivery time for orders?",
+        "How soon can I expect to receive my package after placing an order?"
+      ],
+      "Answer": [
+        "Our standard shipping usually takes 3-7 business days within the domestic region.",
+        "You can expect to receive your package within 3-7 business days from the date of order placement.",
+        "Shipping times typically range from 3-7 business days, depending on your location and the shipping method chosen."
+      ]
+    },
+    {
+      "category": "International Shipping",
+      "Question": [
+        "Do you offer international shipping?",
+        "Can I place an order for international delivery?",
+        "Do you ship products to customers outside of the country?"
+      ],
+      "Answer": [
+        "Yes, we offer international shipping to select countries worldwide.",
+        "We do provide shipping services for customers located outside of the country.",
+        "International shipping is available for customers residing outside the domestic region."
+      ]
+    },
+    {
+      "category": "Order Tracking",
+      "Question": [
+        "How can I track my order?",
+        "Is there a way to track the status of my shipment?",
+        "How can I check the whereabouts of my package?"
+      ],
+      "Answer": [
+        "Once your order is shipped, you will receive a tracking number via email to track your shipment's progress.",
+        "You can track your order by using the tracking number provided in the shipping confirmation email.",
+        "To track your order, simply enter the tracking number on our website's tracking page or the shipping carrier's website."
+      ]
+    },
+    {
+      "category": "Care Instructions",
+      "Question": [
+        "Are your clothes machine washable?",
+        "Can I wash your clothes in a washing machine?",
+        "Do I need to hand wash or dry clean your garments?"
+      ],
+      "Answer": [
+        "Yes, the majority of our clothing items are machine washable. Please refer to the care instructions on the product page for specific details.",
+        "Most of our clothes can be safely machine washed, but we recommend checking the care instructions on each item to ensure proper care.",
+        "Our garments are designed to be easily cared for, and many can be machine washed. However, please check the care instructions on each item for specific guidelines."
+      ]
+    },
+    {
+      "category": "Sizing Assistance",
+      "Question": [
+        "Can I get assistance with sizing?",
+        "Is there any help available for selecting the right size?",
+        "What support do you offer for choosing the appropriate size?"
+      ],
+      "Answer": [
+        "Yes, we provide a detailed size chart for each clothing item to help you choose the correct size. You can find it on the product page.",
+        "To ensure you select the right size, please refer to our size chart, which is available on each product page.",
+        "We offer a size chart with measurements for each garment to assist you in finding the perfect fit. It can be found on the product page."
+      ]
+    },
+    {
+      "category": "Gift Wrapping",
+      "Question": [
+        "Do you offer gift wrapping services?",
+        "Can I request gift wrapping for my order?",
+        "Do you provide gift wrapping for special occasions?"
+      ],
+      "Answer": [
+        "Yes, we offer gift wrapping services. During the checkout process, you can select the gift wrap option and include a personalized message.",
+        "Certainly! You can choose to have your order gift wrapped by selecting the gift wrap option at checkout.",
+        "We do provide gift wrapping services to make your purchase extra special. Simply select the gift wrap option during checkout."
+      ]
+    },
+    {
+      "category": "Promotions and Discounts",
+      "Question": [
+        "Are there any special promotions or discounts available?",
+        "Do you have any ongoing promotions or discounts?",
+        "Can I avail myself of any discounts on my purchase?"
+      ],
+      "Answer": [
+        "We frequently run promotions and discounts. Keep an eye on our website or subscribe to our newsletter to stay updated on the latest offers.",
+        "Yes, we periodically offer special promotions and discounts on selected items. Visit our website or follow us on social media to stay informed about the latest deals.",
+        "We often have exciting promotions and discounts available. Please check our website or sign up for our newsletter to receive updates on the latest offers."
+      ]
+    },
+    {
+      "category": "Customer Support",
+      "Question": [
+        "How can I contact customer support?",
+        "What are the ways to get in touch with your customer support team?",
+        "What are the available channels for contacting customer support?"
+      ],
+      "Answer": [
+        "You can contact our customer support team via email at support@onlineshop.com or through our live chat feature on the website.",
+        "To reach our support staff, you can email us at support@onlineshop.com or utilize the live chat option on our website for immediate assistance.",
+        "If you need assistance, our customer support team is available to help. You can reach us via email at support@onlineshop.com or engage with our live chat support on our website."
+      ]
+    },
+    {
+      "category": "Placing an Order",
+      "Question": [
+        "How do I place an order?",
+        "What is the process for making a purchase on your website?",
+        "Can you guide me on how to place an order for the desired items?"
+      ],
+      "Answer": [
+        "To place an order, simply browse our website, select the desired items, add them to your cart, and proceed to checkout.",
+        "Placing an order is easy! Just browse our products, choose the items you want, and follow the instructions during the checkout process.",
+        "You can make a purchase by selecting the items you wish to buy, adding them to your cart, and then following the prompts at the checkout page to complete your order."
+      ]
+    },
+    {
+      "category": "Product Availability",
+      "Question": [
+        "Are all products in stock?",
+        "Do you have all items listed on your website in stock?",
+        "What is the availability of the products listed on your website?"
+      ],
+      "Answer": [
+        "We strive to keep our inventory up to date, but occasionally certain items may be out of stock. Please check the product page for real-time availability information.",
+        "While we make every effort to have all items in stock, there may be instances where certain products are temporarily unavailable. You can check the product page for the most up-to-date information.",
+        "We aim to have all listed products in stock. However, availability may vary, and occasionally some items may be temporarily out of stock. Please refer to the product page for the most accurate information."
+      ]
+    },
+    {
+      "category": "Account Management",
+      "Question": [
+        "How do I create an account?",
+        "What is the process for registering an account on your website?",
+        "Can you guide me through the account creation procedure?"
+      ],
+      "Answer": [
+        "To create an account, click on the \"Sign Up\" or \"Register\" button on our website and follow the instructions to create your account.",
+        "Registering an account is quick and easy! Simply click on the \"Sign Up\" or \"Register\" button, provide the required information, and your account will be created.",
+        "Creating an account is simple. Just click on the \"Sign Up\" or \"Register\" button, fill in the necessary details, and you'll have your account set up in no time."
+      ]
+    },
+    {
+      "category": "Product Reviews",
+      "Question": [
+        "Can I leave a review for a product?",
+        "Is there a way to provide feedback or review a product?",
+        "How can I share my experience and thoughts about a specific item?"
+      ],
+      "Answer": [
+        "Yes, we encourage customers to leave reviews for products they have purchased. You can find the option to leave a review on the product page.",
+        "We value your feedback! Feel free to share your thoughts and experiences by leaving a review on the product page.",
+        "We welcome your feedback! You can leave a review on the product page to share your thoughts and help other customers make informed decisions."
+      ]
+    }
+  ]
+}

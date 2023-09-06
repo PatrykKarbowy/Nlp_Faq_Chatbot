@@ -1,0 +1,114 @@
+{
+  "intents": [
+    {
+      "category": "Greetings",
+      "Question": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "Answer": [
+        "Hello and welcome to [Car Dealer Name]! How can we assist you today?",
+        "Hi there! How can we help you with your car needs?",
+        "Hello, and thank you for choosing [Car Dealer Name]. How may we assist you?",
+        "Good day! How can we make your car shopping experience better today?"
+      ]
+    },
+    {
+      "category": "Goodbye",
+      "Question": ["Bye", "See you later", "Goodbye"],
+      "Answer": [
+        "Goodbye, and have a great day!",
+        "See you later! If you have more questions, feel free to return anytime.",
+        "Thank you for considering [Car Dealer Name]. Goodbye!"
+      ]
+    },
+    {
+      "category": "Thanks",
+      "Question": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "Answer": ["You're welcome!", "It's our pleasure to assist you!", "Thank you for choosing [Car Dealer Name]!"]
+    },
+    {
+      "category": "Vehicle Inventory",
+      "Question": [
+        "What types of vehicles do you offer?",
+        "Can you tell me about your available car models?",
+        "What brands of cars do you sell?"
+      ],
+      "Answer": [
+        "We offer a wide range of vehicles, including sedans, SUVs, trucks, and more. Our inventory includes top brands like [Brand 1], [Brand 2], and [Brand 3].",
+        "You can explore our car inventory, which includes models from leading manufacturers such as [Brand 1], [Brand 2], and [Brand 3].",
+        "Our car selection features various brands, including [Brand 1], [Brand 2], and [Brand 3], offering options to suit different preferences."
+      ]
+    },
+    {
+      "category": "Test Drives",
+      "Question": [
+        "How can I schedule a test drive?",
+        "Can I test drive multiple vehicles?",
+        "What do I need to bring for a test drive?"
+      ],
+      "Answer": [
+        "To schedule a test drive, please call our dealership or visit our website to fill out a test drive request form. We'll be happy to arrange it for you.",
+        "Certainly! You can test drive multiple vehicles to find the one that suits you best.",
+        "For a test drive, all you need is a valid driver's license. We'll provide the vehicle and guide you through the process."
+      ]
+    },
+    {
+      "category": "Financing Options",
+      "Question": [
+        "What financing options are available?",
+        "Can I get pre-approved for a car loan?",
+        "Do you offer lease options?"
+      ],
+      "Answer": [
+        "We offer a range of financing options, including car loans and lease programs. Our finance team can help you explore the best option for your needs.",
+        "Yes, you can get pre-approved for a car loan. Please visit our financing page on our website or contact our finance department for assistance.",
+        "Absolutely! We have lease options available for many of our vehicles. Contact us to discuss the details."
+      ]
+    },
+    {
+      "category": "Service and Maintenance",
+      "Question": [
+        "Do you offer car maintenance services?",
+        "Where can I get my vehicle serviced?",
+        "What is included in your car maintenance packages?"
+      ],
+      "Answer": [
+        "Yes, we offer car maintenance services through our certified service center. You can schedule an appointment with our service team for any necessary maintenance.",
+        "Our service center is located at [Service Center Address]. You can bring your vehicle here for maintenance, repairs, and servicing.",
+        "Our car maintenance packages typically include oil changes, tire rotations, inspections, and other essential services to keep your vehicle in top condition."
+      ]
+    },
+    {
+      "category": "Warranty Information",
+      "Question": [
+        "What warranties do you offer on your vehicles?",
+        "Can you explain the warranty coverage?",
+        "How long are your warranties valid?"
+      ],
+      "Answer": [
+        "We offer various warranty options for our vehicles. Please ask our sales team for details on specific models and their warranty coverage.",
+        "Our warranty coverage includes [Warranty Details]. For specific information, please consult with our sales team.",
+        "Warranty durations may vary by vehicle model. Our sales team can provide you with precise information about warranty lengths."
+      ]
+    },
+    {
+      "category": "Contact Information",
+      "Question": [
+        "How can I contact your dealership?",
+        "What are your contact details?",
+        "Can you provide your phone number and email address?"
+      ],
+      "Answer": [
+        "You can reach our dealership by calling [Phone Number] or sending an email to [Email Address]. We're here to assist you.",
+        "Feel free to contact us at [Phone Number] or reach out via email at [Email Address]. We're ready to answer your questions.",
+        "To get in touch with us, simply call [Phone Number] or send an email to [Email Address]. We look forward to helping you."
+      ]
+    }
+  ]
+}
+
