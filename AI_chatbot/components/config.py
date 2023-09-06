@@ -12,6 +12,7 @@ class DLTrainingConfig(BaseModel):
     learning_rate: float
     max_epochs: int
     loss: str
+    device: str
     
     # Model parameters
     hidden_layers: int
@@ -27,7 +28,7 @@ class DLTrainingConfig(BaseModel):
     def validate_data_path(cls, v: Union[str, Path]) -> Path:
         return Path(v).resolve()
     
-    @validator("batch_size", "max_epochs", "hidden_layers", "weight_decay")
+    @validator("batch_size", "max_epochs", "hidden_layers", "weight_decay", "device")
     def validate_str_field(cls, v: Union[str, int, float]) -> int:
         if isinstance(v, int):
             return v

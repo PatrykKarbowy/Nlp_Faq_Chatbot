@@ -69,6 +69,15 @@ class ChatDataset(Dataset):
         """
         return len(self.words_collection.all_words)
     
+    @property
+    def get_categories(self) -> int:
+        """Get the number of categories in dataset.
+
+        Returns:
+            int: Number of categories in dataset.
+        """
+        return len(self.words_collection.categories)
+    
     def __getitem__(self, index: int) -> Tuple[np.array, np.array]:
         """Get a single sample from the dataset.
 
@@ -91,4 +100,3 @@ class ChatDataset(Dataset):
         y_data = np.array(y_data)
         
         return (X_data[index], y_data[index])
-    
